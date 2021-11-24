@@ -13,6 +13,7 @@ jobs:
           - '3.7'
           - '3.8'
           - '3.9'
+          - '3.10'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -114,23 +115,3 @@ jobs:
       with:
         name: wheels
         path: dist
-
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    if: "startsWith(github.ref, 'refs/tags/')"
-    needs: [ macos, windows, linux]
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: wheels
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Publish to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          pip install --upgrade twine
-          twine upload --skip-existing *
