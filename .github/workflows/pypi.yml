@@ -9,9 +9,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
           - '3.9'
     runs-on: macos-latest
     steps:
@@ -32,7 +29,7 @@ jobs:
         with:
           maturin-version: latest
           target: x86_64
-          args: --release --out dist
+          args: --release --out dist --no-sdist
       - name: Build wheels - universal2
         uses: messense/maturin-action@v1
         with:
@@ -49,10 +46,6 @@ jobs:
       matrix:
         target: [x64, x86]
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
           - '3.10'
     steps:
       - uses: actions/checkout@v2
@@ -85,10 +78,6 @@ jobs:
       matrix:
         target: [x86_64]
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
           - '3.10'
     steps:
     - uses: actions/checkout@v2
