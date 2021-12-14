@@ -9,10 +9,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
           - '3.10'
     runs-on: macos-latest
     steps:
@@ -50,10 +46,6 @@ jobs:
       matrix:
         target: [x64, x86]
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
           - '3.10'
     steps:
       - uses: actions/checkout@v2
@@ -86,10 +78,6 @@ jobs:
       matrix:
         target: [x64]
         python-version:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
           - '3.10'
     steps:
     - uses: actions/checkout@v2
@@ -109,7 +97,7 @@ jobs:
       with:
         maturin-version: latest
         target: ${{ matrix.target }}
-        args: --release --out dist --no-sdist
+        args: --release --out dist --no-sdist --manylinux 2010
         container: off
         manylinux: auto
     - name: Upload wheels
