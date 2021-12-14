@@ -95,7 +95,6 @@ jobs:
       uses: messense/maturin-action@v1
       with:
         maturin-version: latest
-        target: x86_64
         args: --release --out dist --no-sdist
         container: off
         manylinux: auto
