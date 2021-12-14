@@ -29,6 +29,8 @@ jobs:
       with:
         maturin-version: latest
         args: --release --out dist --no-sdist
+        manylinux: 2010
+        target: x86_64
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
