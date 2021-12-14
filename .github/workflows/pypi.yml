@@ -31,6 +31,7 @@ jobs:
         args: --release --out dist --no-sdist
         manylinux: 2010
         target: x86_64
+        rust-toolchain: nightly
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
